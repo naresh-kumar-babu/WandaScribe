@@ -1,0 +1,91 @@
+{
+	"name": "WandaScribe",
+	"version": "1.0.0",
+	"author": [
+		"Naresh Kumar Babu"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:WandaScribe",
+	"descriptionmsg": "wandascribe-desc",
+	"license-name": "MIT",
+	"type": "editor",
+	"requires": {
+		"MediaWiki": ">= 1.42.0",
+		"extensions": {
+			"Wanda": "*"
+		}
+	},
+	"MessagesDirs": {
+		"WandaScribe": [
+			"i18n"
+		]
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\WandaScribe\\": "includes/"
+	},
+	"ResourceModules": {
+		"ext.wandascribe.editor": {
+            "class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"packageFiles": [
+				"init.js",
+				"editorIntegration.js",
+				"components/AssistancePanel.vue",
+				"components/SuggestionPopup.vue",
+                "codex.js",
+				{
+					"name": "icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconCheck",
+						"cdxIconEdit",
+						"cdxIconInfo",
+						"cdxIconArticleSearch",
+						"cdxIconHighlight",
+						"cdxIconTextStyle"
+					]
+				}
+			],
+			"styles": [
+				"styles/editor.css"
+			],
+			"dependencies": [
+				"vue"
+			],
+            "codexComponents": [
+                "CdxButton",
+				"CdxProgressBar",
+                "CdxMessage",
+				"CdxIcon"
+			],
+			"messages": [
+				"wandascribe-panel-title",
+				"wandascribe-check-spelling",
+				"wandascribe-check-grammar",
+				"wandascribe-improve-text",
+				"wandascribe-make-formal",
+				"wandascribe-make-casual",
+				"wandascribe-simplify",
+				"wandascribe-expand",
+				"wandascribe-summarize",
+				"wandascribe-loading",
+				"wandascribe-error",
+				"wandascribe-no-text-selected",
+				"wandascribe-apply",
+				"wandascribe-dismiss",
+				"wandascribe-suggestion",
+				"wandascribe-powered-by-wanda",
+				"wandascribe-select-text-hint",
+				"wandascribe-wanda-not-available",
+				"wandascribe-no-spelling-errors",
+				"wandascribe-no-changes-needed"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "WandaScribe/resources"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "MediaWiki\\Extension\\WandaScribe\\Hooks\\EditorHook::onBeforePageDisplay"
+	},
+	"manifest_version": 2
+}

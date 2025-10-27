@@ -1,0 +1,315 @@
+/* WandaScribe Editor Styles */
+
+/* Panel Container */
+.wandascribe-panel-container {
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Assistance Panel */
+.wandascribe-panel {
+  background: var(--background-color-neutral-subtle, #f8f9fa);
+  border: 1px solid var(--border-color-base, #a2a9b1);
+  border-radius: 2px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  color: var(--color-base, #202122);
+}
+
+.wandascribe-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color-subtle, #c8ccd1);
+  padding-bottom: 8px;
+}
+
+.wandascribe-panel-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-base, #202122);
+}
+
+.wandascribe-powered-by {
+  font-size: 11px;
+  color: var(--color-subtle, #54595d);
+  font-style: italic;
+}
+
+.wandascribe-panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wandascribe-hint,
+.wandascribe-error {
+  margin-bottom: 8px;
+}
+
+.wandascribe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wandascribe-actions .cdx-button {
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+.wandascribe-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  width: 100%;
+}
+
+.wandascribe-loading .cdx-progress-bar {
+  width: 100%;
+  min-width: 200px;
+}
+
+.wandascribe-loading span {
+  font-size: 14px;
+  color: var(--color-subtle, #54595d);
+}
+
+/* Suggestion Popup */
+.wandascribe-suggestion-popup {
+  position: fixed;
+  background: var(--background-color-base, #ffffff);
+  border: 1px solid var(--border-color-base, #a2a9b1);
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  max-width: 500px;
+  min-width: 350px;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease-in;
+  color: var(--color-base, #202122);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wandascribe-suggestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color-subtle, #eaecf0);
+}
+
+.wandascribe-suggestion-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-base, #202122);
+}
+
+.wandascribe-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-subtle, #54595d);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: background-color 100ms, color 100ms;
+}
+
+.wandascribe-close-btn:hover {
+  background: var(--background-color-interactive-subtle, #eaecf0);
+  color: var(--color-base, #202122);
+}
+
+.wandascribe-suggestion-content {
+  margin-bottom: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.wandascribe-suggestion-content .wandascribe-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  width: 100%;
+}
+
+.wandascribe-suggestion-content .wandascribe-loading .cdx-progress-bar {
+  width: 100%;
+}
+
+.wandascribe-suggestion-content .wandascribe-loading span {
+  font-size: 14px;
+  color: var(--color-subtle, #54595d);
+}
+
+.wandascribe-original,
+.wandascribe-suggested {
+  margin-bottom: 12px;
+}
+
+.wandascribe-original strong,
+.wandascribe-suggested strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: var(--color-subtle, #54595d);
+}
+
+.wandascribe-original p,
+.wandascribe-suggested p {
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--background-color-neutral-subtle, #f8f9fa);
+  border-left: 3px solid var(--border-color-subtle, #c8ccd1);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-base, #202122);
+}
+
+.wandascribe-suggested p {
+  border-left-color: var(--color-progressive, #36c);
+  background: var(--background-color-progressive-subtle, #eaf3ff);
+}
+
+.wandascribe-misspellings {
+  margin-top: 12px;
+}
+
+.wandascribe-misspellings strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--color-subtle, #54595d);
+}
+
+.wandascribe-misspellings ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wandascribe-misspellings li {
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  background: var(--background-color-warning-subtle, #fef6e7);
+  border-left: 3px solid var(--color-warning, #fc3);
+  font-size: 14px;
+}
+
+.wandascribe-misspellings .misspelled-word {
+  font-weight: 600;
+  color: var(--color-error, #d33);
+}
+
+.wandascribe-misspellings .suggestions {
+  margin-left: 8px;
+  color: var(--color-subtle, #54595d);
+  font-size: 13px;
+}
+
+.wandascribe-spelling-suggestion {
+  background: var(--background-color-interactive-subtle, #eaecf0);
+  border: 1px solid var(--border-color-base, #a2a9b1);
+  border-radius: 2px;
+  padding: 2px 8px;
+  margin-left: 4px;
+  font-size: 12px;
+  color: var(--color-progressive, #36c);
+  cursor: pointer;
+  transition: background-color 100ms, border-color 100ms;
+}
+
+.wandascribe-spelling-suggestion:hover {
+  background: var(--background-color-progressive-subtle, #eaf3ff);
+  border-color: var(--color-progressive, #36c);
+  color: var(--color-progressive, #36c);
+}
+
+.wandascribe-spelling-suggestion:active {
+  background: var(--background-color-progressive, #36c);
+  color: #ffffff;
+}
+
+.wandascribe-misspellings .no-suggestions {
+  margin-left: 8px;
+  color: var(--color-disabled, #72777d);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.wandascribe-suggestion-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color-subtle, #eaecf0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wandascribe-panel {
+    padding: 8px 12px;
+  }
+
+  .wandascribe-actions {
+    flex-direction: column;
+  }
+
+  .wandascribe-actions .cdx-button {
+    width: 100%;
+  }
+
+  .wandascribe-suggestion-popup {
+    max-width: 90vw;
+    min-width: unset;
+    left: 5vw !important;
+    right: 5vw;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .wandascribe-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .wandascribe-suggestion-popup {
+    max-width: 95vw;
+    left: 2.5vw !important;
+    right: 2.5vw;
+    padding: 12px;
+  }
+
+  .wandascribe-suggestion-content {
+    max-height: 300px;
+  }
+}
+
+/* The theme will automatically adapt via CSS variables */
+/* No manual dark mode overrides needed - MediaWiki handles this */

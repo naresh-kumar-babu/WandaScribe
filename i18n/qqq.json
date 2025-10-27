@@ -1,0 +1,23 @@
+{
+	"wandascribe-desc": "{{desc|name=WandaScribe|url=https://www.mediawiki.org/wiki/Extension:WandaScribe}}",
+	"wandascribe-panel-title": "Title of the WandaScribe assistance panel",
+	"wandascribe-check-spelling": "Button text for checking spelling",
+	"wandascribe-check-grammar": "Button text for checking grammar",
+	"wandascribe-improve-text": "Button text for improving text quality",
+	"wandascribe-make-formal": "Button text for making text more formal",
+	"wandascribe-make-casual": "Button text for making text more casual",
+	"wandascribe-simplify": "Button text for simplifying text",
+	"wandascribe-expand": "Button text for expanding text with more details",
+	"wandascribe-summarize": "Button text for summarizing text",
+	"wandascribe-loading": "Loading message shown when AI is processing",
+	"wandascribe-error": "Generic error message",
+	"wandascribe-no-text-selected": "Message shown when no text is selected",
+	"wandascribe-apply": "Button text for applying a suggestion",
+	"wandascribe-dismiss": "Button text for dismissing a suggestion",
+	"wandascribe-suggestion": "Label for the suggestion popup",
+	"wandascribe-powered-by-wanda": "Attribution text showing the extension is powered by Wanda",
+	"wandascribe-select-text-hint": "Hint message to select text for assistance",
+	"wandascribe-wanda-not-available": "Error message when Wanda extension is not available",
+	"wandascribe-no-spelling-errors": "Success message shown when no spelling errors are found",
+	"wandascribe-no-changes-needed": "Message shown when the text doesn't need any changes"
+}
