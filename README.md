@@ -86,25 +86,6 @@ As you type, WandaScribe monitors your text and:
 - Shows a popup with suggestions near the cursor
 - Allows you to quickly correct mistakes
 
-## Architecture
-
-### Components
-
-1. **EditorHook.php**: Hook that injects WandaScribe into edit pages
-2. **AssistancePanel.vue**: Vue component for the assistance panel with action buttons
-3. **SuggestionPopup.vue**: Vue component for showing AI suggestions
-4. **editorIntegration.js**: Core logic for text selection, API calls, and editor interaction
-5. **init.js**: Initialization and component mounting
-
-### How It Works
-
-1. **Text Selection**: User selects text in the wikitext editor
-2. **Action Request**: User clicks an assistance button (e.g., "Improve Text")
-3. **API Call**: Extension calls Wanda's `wandachat` API with a specific prompt
-4. **AI Processing**: Wanda processes the request using the configured LLM
-5. **Suggestion Display**: Result is shown in a popup
-6. **Application**: User can apply the suggestion to replace the original text
-
 ## Troubleshooting
 
 ### Panel doesn't appear
@@ -139,7 +120,6 @@ As you type, WandaScribe monitors your text and:
 - Requires Wanda extension to be installed and configured
 - Performance depends on the LLM provider's speed
 - Quality of suggestions depends on the LLM model used
-
 
 ## Support
 
