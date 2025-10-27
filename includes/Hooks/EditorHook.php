@@ -27,7 +27,7 @@ class EditorHook {
 	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ): void {
 		$title = $out->getTitle();
-		
+
 		// Only add on edit pages
 		$action = $out->getRequest()->getVal( 'action', 'view' );
 		// if ( !in_array( $action, [ 'edit', 'submit' ] ) || !$title || !$title->exists() && $action !== 'edit' ) {
@@ -42,7 +42,7 @@ class EditorHook {
 
 		// Add the WandaScribe module
 		$out->addModules( 'ext.wandascribe.editor' );
-		
+
 		// Pass configuration to JavaScript
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$out->addJsConfigVars( [
