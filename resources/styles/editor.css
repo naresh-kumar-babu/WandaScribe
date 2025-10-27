@@ -81,14 +81,15 @@
 
 /* Suggestion Popup */
 .wandascribe-suggestion-popup {
-  position: fixed;
+  position: absolute;
   background: var(--background-color-base, #ffffff);
   border: 1px solid var(--border-color-base, #a2a9b1);
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
   padding: 16px;
-  max-width: 500px;
-  min-width: 350px;
+  max-width: min(500px, 90vw);
+  min-width: min(350px, 85vw);
+  width: max-content;
   z-index: 10000;
   animation: fadeIn 0.2s ease-in;
   color: var(--color-base, #202122);
@@ -144,7 +145,7 @@
 
 .wandascribe-suggestion-content {
   margin-bottom: 12px;
-  max-height: 400px;
+  max-height: min(400px, 60vh);
   overflow-y: auto;
 }
 
@@ -285,10 +286,7 @@
 
   .wandascribe-suggestion-popup {
     max-width: 90vw;
-    min-width: unset;
-    left: 5vw !important;
-    right: 5vw;
-    width: auto;
+    min-width: 80vw;
   }
 }
 
@@ -301,15 +299,11 @@
 
   .wandascribe-suggestion-popup {
     max-width: 95vw;
-    left: 2.5vw !important;
-    right: 2.5vw;
+    min-width: 90vw;
     padding: 12px;
   }
 
   .wandascribe-suggestion-content {
-    max-height: 300px;
+    max-height: min(300px, 50vh);
   }
 }
-
-/* The theme will automatically adapt via CSS variables */
-/* No manual dark mode overrides needed - MediaWiki handles this */

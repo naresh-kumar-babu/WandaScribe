@@ -107,6 +107,14 @@ module.exports = exports = {
       };
     }
   },
+  mounted() {
+    window.addEventListener( 'scroll', this.updatePosition, true );
+    window.addEventListener( 'resize', this.updatePosition );
+  },
+  beforeUnmount() {
+    window.removeEventListener( 'scroll', this.updatePosition, true );
+    window.removeEventListener( 'resize', this.updatePosition );
+  },
   methods: {
     msg( key ) {
       return mw.message( key ).text();
@@ -120,6 +128,30 @@ module.exports = exports = {
       this.suggestion = null;
       this.applyDisabled = false;
       this.misspellings = [];
+      this.updatePosition();
+    },
+    updatePosition() {
+      if ( !this.visible ) {
+        return;
+      }
+      this.$nextTick( () => {
+        const popup = this.$el;
+        if ( !popup ) {
+          return;
+        }
+        
+        const rect = popup.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        if ( rect.right > viewportWidth ) {
+          this.position.left = Math.max( 10, viewportWidth - rect.width - 10 );
+        }
+        
+        if ( rect.bottom > viewportHeight ) {
+          this.position.top = Math.max( 10, viewportHeight - rect.height - 10 + window.scrollY );
+        }
+      } );
     },
     hide() {
       this.visible = false;
