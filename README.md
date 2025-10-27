@@ -1,6 +1,6 @@
 # WandaScribe - AI Writing Assistant for MediaWiki
 
-WandaScribe is a MediaWiki extension that provides literary assistance similar to Grammarly by utilizing the LLM capability of the [Wanda extension](https://www.mediawiki.org/wiki/Extension:Wanda). It helps users write better content in the default wikitext edit window with features like spell check, grammar check, text improvement, and more.
+WandaScribe is a MediaWiki extension that provides literary assistance by utilizing the LLM capability of the [Wanda extension](https://www.mediawiki.org/wiki/Extension:Wanda). It helps users write better content in the default wikitext edit window with features like spell check, grammar check, text improvement, and more.
 
 ## Features
 
