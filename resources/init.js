@@ -51,6 +51,9 @@ const EditorIntegration = require( './editorIntegration.js' );
       onApplySuggestion: ( suggestion, originalWord ) => {
         editorIntegration.applySuggestion( suggestion, originalWord );
       },
+      onApplyAllSuggestions: ( corrections ) => {
+        editorIntegration.applyAllSuggestions( corrections );
+      },
       onDismissed: () => {
         // Popup already hides itself
       }

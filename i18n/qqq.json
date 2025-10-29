@@ -13,11 +13,13 @@
 	"wandascribe-error": "Generic error message",
 	"wandascribe-no-text-selected": "Message shown when no text is selected",
 	"wandascribe-apply": "Button text for applying a suggestion",
+	"wandascribe-apply-all": "Button text for applying all spelling corrections at once",
 	"wandascribe-dismiss": "Button text for dismissing a suggestion",
 	"wandascribe-suggestion": "Label for the suggestion popup",
 	"wandascribe-powered-by-wanda": "Attribution text showing the extension is powered by Wanda",
 	"wandascribe-select-text-hint": "Hint message to select text for assistance",
 	"wandascribe-wanda-not-available": "Error message when Wanda extension is not available",
 	"wandascribe-no-spelling-errors": "Success message shown when no spelling errors are found",
-	"wandascribe-no-changes-needed": "Message shown when the text doesn't need any changes"
+	"wandascribe-no-changes-needed": "Message shown when the text doesn't need any changes",
+	"wandascribe-all-corrections-applied": "Success message shown when all spelling corrections have been applied"
 }

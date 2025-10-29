@@ -44,7 +44,7 @@
                 v-for="(sugg, sIdx) in word.suggestions"
                 :key="sIdx"
                 class="wandascribe-spelling-suggestion"
-                @click="applySpellingSuggestion(word.word, sugg)"
+                @click="applyIndividualSuggestion(word.word, sugg)"
               >
                 {{ sugg }}
               </button>
@@ -57,7 +57,25 @@
       </div>
     </div>
 
-    <div v-if="suggestion" class="wandascribe-suggestion-actions">
+    <div v-if="misspellings && misspellings.length > 0" class="wandascribe-suggestion-actions">
+      <cdx-button
+        action="progressive"
+        weight="primary"
+        :disabled="!hasApplicableSuggestions"
+        @click="applyAllSuggestions"
+      >
+        {{ msg( 'wandascribe-apply-all' ) }}
+      </cdx-button>
+      <cdx-button
+        action="default"
+        weight="quiet"
+        @click="dismiss"
+      >
+        {{ msg( 'wandascribe-dismiss' ) }}
+      </cdx-button>
+    </div>
+
+    <div v-else-if="suggestion" class="wandascribe-suggestion-actions">
       <cdx-button
         action="progressive"
         weight="primary"
@@ -86,7 +104,7 @@ module.exports = exports = {
     CdxButton,
     CdxMessage
   },
-  emits: [ 'apply-suggestion', 'dismissed' ],
+  emits: [ 'apply-suggestion', 'apply-all-suggestions', 'dismissed' ],
   data() {
     return {
       visible: false,
@@ -105,6 +123,11 @@ module.exports = exports = {
         top: this.position.top + 'px',
         left: this.position.left + 'px'
       };
+    },
+    hasApplicableSuggestions() {
+      return this.misspellings.some( word => 
+        word.suggestions && word.suggestions.length > 0 
+      );
     }
   },
   mounted() {
@@ -181,11 +204,33 @@ module.exports = exports = {
       this.$emit( 'apply-suggestion', this.suggestion, null );
       this.hide();
     },
-    applySpellingSuggestion( originalWord, suggestion ) {
-      // For spelling corrections, we need to replace just the misspelled word
-      // Pass both the suggestion and the original word to replace
+    applyIndividualSuggestion( originalWord, suggestion ) {
+      // Apply individual spelling correction without closing the popup
       this.$emit( 'apply-suggestion', suggestion, originalWord );
-      this.hide();
+      // Remove the corrected word from the misspellings list
+      this.misspellings = this.misspellings.filter( word => word.word !== originalWord );
+      if ( this.misspellings.length === 0 ) {
+        this.setSuccess( this.msg( 'wandascribe-all-corrections-applied' ) );
+        setTimeout( () => {
+          this.hide();
+        }, 1500 );
+      }
+    },
+    applyAllSuggestions() {
+      const corrections = [];
+      this.misspellings.forEach( word => {
+        if ( word.suggestions && word.suggestions.length > 0 ) {
+          corrections.push( {
+            original: word.word,
+            replacement: word.suggestions[ 0 ] // Use first suggestion
+          } );
+        }
+      } );
+      
+      if ( corrections.length > 0 ) {
+        this.$emit( 'apply-all-suggestions', corrections );
+        this.hide();
+      }
     }
   }
 };

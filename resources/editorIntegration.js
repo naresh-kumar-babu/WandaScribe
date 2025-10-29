@@ -320,30 +320,59 @@ IMPORTANT: Return ONLY the summary. Do NOT include any preamble, explanations, o
       return;
     }
 
-    let before, after, newPosition;
-
     if ( originalWord ) {
-      // For spell check: replace only the specific word within the selection
-      const selectedText = this.textarea.value.substring( this.selectionStart, this.selectionEnd );
+      // For spell check: replace all occurrences of the word within the current selection
+      // Get the current selected text (which may have been updated by previous corrections)
+      const currentSelectionText = this.textarea.value.substring( this.selectionStart, this.selectionEnd );
       const wordRegex = new RegExp( '\\b' + originalWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g' );
-      const replacedText = selectedText.replace( wordRegex, suggestion );
+      const replacedText = currentSelectionText.replace( wordRegex, suggestion );
 
-      before = this.textarea.value.substring( 0, this.selectionStart );
-      after = this.textarea.value.substring( this.selectionEnd );
+      // Replace the selection with the corrected text
+      const before = this.textarea.value.substring( 0, this.selectionStart );
+      const after = this.textarea.value.substring( this.selectionEnd );
       this.textarea.value = before + replacedText + after;
 
-      // Update cursor position
-      newPosition = this.selectionStart + replacedText.length;
+      // Calculate how much the text length changed
+      const lengthDifference = replacedText.length - currentSelectionText.length;
+      
+      // Update the selection end to reflect the new text length
+      this.selectionEnd = this.selectionEnd + lengthDifference;
+      
+      this.textarea.setSelectionRange( this.selectionStart, this.selectionEnd );
     } else {
       // For other suggestions: replace entire selection
-      before = this.textarea.value.substring( 0, this.selectionStart );
-      after = this.textarea.value.substring( this.selectionEnd );
+      const before = this.textarea.value.substring( 0, this.selectionStart );
+      const after = this.textarea.value.substring( this.selectionEnd );
       this.textarea.value = before + suggestion + after;
 
       // Update cursor position
-      newPosition = this.selectionStart + suggestion.length;
+      let newPosition = this.selectionStart + suggestion.length;
+      this.textarea.setSelectionRange( newPosition, newPosition );
     }
 
+    this.textarea.focus();
+
+    const event = new Event( 'input', { bubbles: true } );
+    this.textarea.dispatchEvent( event );
+  }
+
+  applyAllSuggestions( corrections ) {
+    if ( !corrections || corrections.length === 0 ) {
+      return;
+    }
+
+    let text = this.textarea.value.substring( this.selectionStart, this.selectionEnd );
+    
+    corrections.forEach( correction => {
+      const wordRegex = new RegExp( '\\b' + correction.original.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g' );
+      text = text.replace( wordRegex, correction.replacement );
+    } );
+
+    const before = this.textarea.value.substring( 0, this.selectionStart );
+    const after = this.textarea.value.substring( this.selectionEnd );
+    this.textarea.value = before + text + after;
+
+    const newPosition = this.selectionStart + text.length;
     this.textarea.setSelectionRange( newPosition, newPosition );
     this.textarea.focus();
 

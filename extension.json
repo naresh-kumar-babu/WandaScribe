@@ -70,13 +70,15 @@
 				"wandascribe-error",
 				"wandascribe-no-text-selected",
 				"wandascribe-apply",
+				"wandascribe-apply-all",
 				"wandascribe-dismiss",
 				"wandascribe-suggestion",
 				"wandascribe-powered-by-wanda",
 				"wandascribe-select-text-hint",
 				"wandascribe-wanda-not-available",
 				"wandascribe-no-spelling-errors",
-				"wandascribe-no-changes-needed"
+				"wandascribe-no-changes-needed",
+				"wandascribe-all-corrections-applied"
 			]
 		}
 	},

@@ -13,11 +13,13 @@
 	"wandascribe-error": "An error occurred. Please try again.",
 	"wandascribe-no-text-selected": "Please select some text to get assistance.",
 	"wandascribe-apply": "Apply",
+	"wandascribe-apply-all": "Apply All",
 	"wandascribe-dismiss": "Dismiss",
 	"wandascribe-suggestion": "Suggestion",
 	"wandascribe-powered-by-wanda": "Powered by Wanda",
 	"wandascribe-select-text-hint": "Select text in the editor to get writing assistance.",
 	"wandascribe-wanda-not-available": "Wanda extension is not available or not properly configured.",
 	"wandascribe-no-spelling-errors": "No spelling errors found!",
-	"wandascribe-no-changes-needed": "No changes needed."
+	"wandascribe-no-changes-needed": "No changes needed.",
+	"wandascribe-all-corrections-applied": "All corrections applied!"
 }
